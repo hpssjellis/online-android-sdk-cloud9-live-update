@@ -16,7 +16,7 @@ read myStoreName
 #keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -validity 999999
 #keytool -genkey -v -keystore <App-Name>.keystore -alias <Alias Name> -keyalg RSA -keysize 2048 -validity 10000
 
-keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -keysize 2048 -validity 10000
+sudo keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -keysize 2048 -validity 10000
 
 # keytool -list -v -keystore /home/david/Desktop/Keys/key.jks -alias MyAlias -storepass 456 -keypass 123
 
@@ -41,7 +41,7 @@ keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg R
 #                -v  
   
   
-keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -binary | openssl base64
+sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -binary | openssl base64
 
 # or in three steps
 # keytool -export -alias $myStoreName -file certfile.cer -keystore $myStoreName.store
@@ -70,7 +70,7 @@ keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openss
 
 
 
-keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -list -v
+sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -list -v
 
 
 
@@ -78,7 +78,7 @@ keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -list -v
 #keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -hex
 
 
-keytool -list -v -keystore $myStoreName.store
+sudo keytool -list -v -keystore $myStoreName.store
 
 
 #notes

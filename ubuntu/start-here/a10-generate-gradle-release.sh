@@ -44,11 +44,17 @@ echo "----------------------------------------------"
 ./gradlew assembleRelease
 
 echo "----------------------------------------------"
+echo "back to the keystore folder"
 echo "Signing the unaligned .apk"
 echo "----------------------------------------------"
 
-sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1-keystore $myStoreName.keystore 
-/home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk $myStoreName
+# helloGradle-release-unsigned.apk
+cd /home/keystore
+
+sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1-keystore $myStoreName.keystore /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk $myStoreName
+
+echo "what is the file now called? enter to continue"
+read
 
 
 #jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore my_application.apk alias_name
@@ -57,6 +63,9 @@ echo "Verifying the signed unaligned .apk"
 echo "----------------------------------------------"
 
 
+echo "what is the file now called? enter to continue"
+read
+
 sudo jarsigner -verify -verbose -certs /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release.apk
 
 echo "----------------------------------------------"
@@ -64,7 +73,8 @@ echo "Aligning and naming the final signed aligned .apk"
 echo "----------------------------------------------"
 
 
-
+echo "what is the file now called? enter to continue"
+read
 
 
 sudo zipalign -v 4 /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName.apk

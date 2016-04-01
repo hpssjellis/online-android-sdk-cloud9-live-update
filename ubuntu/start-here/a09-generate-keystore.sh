@@ -78,7 +78,7 @@ sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -li
 #keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -hex
 
 
-sudo keytool -list -v -keystore $myStoreName.store
+sudo keytool -list -v -keystore $myStoreName.keystore
 
 
 #notes

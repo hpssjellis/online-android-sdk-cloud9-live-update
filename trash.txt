@@ -1,0 +1,17 @@
+  GNU nano 2.4.2              File: godroid.sh                                  
+
+sudo docker images
+
+
+
+sudo docker rmi -f cloud9/ws-android
+
+
+
+sudo docker build --tag="cloud9/ws-android" https://github.com/hpssjellis/templ$
+
+
+
+sudo docker run -it -u ubuntu -p 8080:8080 cloud9/ws-android bash
+
+

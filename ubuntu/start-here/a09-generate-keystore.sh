@@ -92,3 +92,7 @@ keytool -list -v -keystore $myStoreName.store
 #Use Ant to compile your project in release mode:
 
 #ant release
+
+
+#Good reference
+#http://geosoft.no/development/android.html

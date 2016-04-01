@@ -9,7 +9,7 @@
 
 Welcome to your Android SDK workspace on Cloud9 IDE!
 
-##This is Live Update version 1.1.2
+##This is the Android-SDK Live Update version 1.1.2
 
 The Android SDK is already setup and configured for you to use.
 

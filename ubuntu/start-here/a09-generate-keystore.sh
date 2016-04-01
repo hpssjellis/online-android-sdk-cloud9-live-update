@@ -18,15 +18,54 @@ read myStoreName
 
 keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -keysize 2048 -validity 10000
 
+# keytool -list -v -keystore /home/david/Desktop/Keys/key.jks -alias MyAlias -storepass 456 -keypass 123
 
+# or on one line
+# echo y | keytool -genkeypair -dname "cn=Mark Jones, ou=JavaSoft, o=Sun, c=US" -alias business -keypass kpi135 -keystore /working/android.keystore -storepass ab987c -validity 9999
 
+#or another one
+#JAVA_HOME/bin/keytool
+#                -genkeypair
+#                -validity 10000
+#                -dname "CN=company name,
+#                        OU=organisational unit,
+#                        O=organisation,
+#                        L=location,
+#                        S=state,
+#                        C=country code"
+#                -keystore DEV_HOME/AndroidTest.keystore
+#                -storepass password
+#                -keypass password
+#                -alias AndroidTestKey
+#                -keyalg RSA
+#                -v  
+  
+  
 keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -binary | openssl base64
 
 # or in three steps
 # keytool -export -alias $myStoreName -file certfile.cer -keystore $myStoreName.store
 # keytool -import -alias public$myStoreName -file certfile.cer -keystore public$myStoreName.store
 # rm certfile.cer
+# 
+# JAVA_HOME/bin/jarsigner
+#                -verbose
+#                -keystore DEV_HOME/AndroidTest.keystore
+#                -storepass password
+# 	            -keypass password
+#	              -signedjar DEV_HOME/bin/AndroidTest.signed.apk
+#                DEV_HOME/bin/AndroidTest.unsigned.apk
+#	              AndroidTestKey
 
+
+
+
+#ANDROID_HOME/tools/zipalign
+#                -v
+#                -f
+#                4
+#                DEV_HOME/bin/AndroidTest.signed.apk
+#                DEV_HOME/bin/AndroidTest.apk
 
 
 

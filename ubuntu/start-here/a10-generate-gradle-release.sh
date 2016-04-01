@@ -51,7 +51,7 @@ echo "----------------------------------------------"
 # helloGradle-release-unsigned.apk
 #cd /home/keystore
 
-sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1-keystore  /home/keystore/$myStoreName.keystore /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk $myStoreName
+sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore  /home/keystore/$myStoreName.keystore /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk $myStoreName
 
 echo "what is the file now called? enter to continue"
 read

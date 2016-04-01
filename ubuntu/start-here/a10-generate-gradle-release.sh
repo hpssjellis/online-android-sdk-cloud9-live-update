@@ -20,20 +20,54 @@ read myStoreName
 
 sudo keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -keysize 2048 -validity 10000
 
-echo ""
-echo "Now we need to update your ant. properties file, which normally has nothing in it. It needs"
-echo "key.store=/home/keystore/$myStoreName.keystore"
-echo "key.alias=$myStoreName"
+
+
+
+
+
+
+
+#echo ""
+#echo "Now we need to update your ant. properties file, which normally has nothing in it. It needs"
+#echo "key.store=/home/keystore/$myStoreName.keystore"
+#echo "key.alias=$myStoreName"
 
 cd /home/ubuntu/workspace/$myStoreName
 
 
 # you have to make the build.gradle changes
 #printf "\n\nkey.store=/home/keystore/$myStoreName.keystore\nkey.alias=$myStoreName"  >> /home/ubuntu/workspace/$myStoreName/ant.properties
+echo "----------------------------------------------"
+echo "Making Gradle unaligned unsigned release .apk"
+echo "----------------------------------------------"
 
 ./gradlew assembleRelease
 
+echo "----------------------------------------------"
+echo "Signing the unaligned .apk"
+echo "----------------------------------------------"
 
+sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1-keystore $myStoreName.keystore 
+/home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk $myStoreName
+
+
+#jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore my_application.apk alias_name
+echo "----------------------------------------------"
+echo "Verifying the signed unaligned .apk"
+echo "----------------------------------------------"
+
+
+sudo jarsigner -verify -verbose -certs /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release.apk
+
+echo "----------------------------------------------"
+echo "Aligning and naming the final signed aligned .apk"
+echo "----------------------------------------------"
+
+
+
+
+
+sudo zipalign -v 4 /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName-release-unsigned.apk /home/ubuntu/workspace/$myStoreName/build/outputs/apk/$myStoreName.apk
 
 
 # to view keystore information

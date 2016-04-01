@@ -41,7 +41,7 @@ sudo keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -key
 #                -v  
   
   
-sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -binary | openssl base64
+#sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -binary | openssl base64
 
 # or in three steps
 # keytool -export -alias $myStoreName -file certfile.cer -keystore $myStoreName.store
@@ -70,7 +70,7 @@ sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | o
 
 
 
-sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -list -v
+#sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -list -v
 
 
 
@@ -78,7 +78,7 @@ sudo keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore -li
 #keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -hex
 
 
-sudo keytool -list -v -keystore $myStoreName.keystore
+keytool -list -v -keystore $myStoreName.keystore
 
 
 #notes

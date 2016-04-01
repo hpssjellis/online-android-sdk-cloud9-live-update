@@ -37,7 +37,8 @@ ant release
 
 
 
-
+# to view keystore information
+# keytool -list -v -keystore $myStoreName.keystore
 
 
 
@@ -110,7 +111,6 @@ ant release
 #keytool -exportcert -alias $myStoreName -keystore $myStoreName.keystore | openssl sha1 -hex
 
 
-keytool -list -v -keystore $myStoreName.keystore
 
 
 #notes

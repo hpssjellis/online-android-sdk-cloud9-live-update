@@ -10,9 +10,10 @@ cd /home/keystore
 
 echo "You will be asked for two passwords to enter. A keystore password and a key (alias) password for this app". 
 echo "Both passwords can be the same"
-echo "Enter the main directory name for your App. Example helloAnt"
 echo "This will become the name of the keystore file, and will also be the alias name"
 echo "You can have one keystore file for lots of Apps, but we are doing it simply"
+echo ""
+echo "Enter the main directory name for your App. Example helloAnt"
 read myStoreName
 
 #keytool -genkey -v -keystore $myStoreName.keystore -alias $myStoreName -keyalg RSA -validity 999999
@@ -25,9 +26,13 @@ echo "Now we need to update your ant. properties file, which normally has nothin
 echo "key.store=/home/keystore/$myStoreName.keystore"
 echo "key.alias=$myStoreName"
 
-printf "\n\nkey.store=/home/keystore/$myStoreName.keystor\nkey.alias=$myStoreNamee"  >> /home/ubuntu/workspace/$myStoreName/ant.properties
+cd /home/ubuntu/workspace/$myStoreName
 
 
+
+printf "\n\nkey.store=/home/keystore/$myStoreName.keystore\nkey.alias=$myStoreName"  >> /home/ubuntu/workspace/$myStoreName/ant.properties
+
+ant release
 
 
 
